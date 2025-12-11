@@ -307,17 +307,28 @@
         method:'POST', headers:{'Content-Type':'application/json'},
         body: JSON.stringify({ sessionId, message:q })
       });
+      
+      if (!r.ok) {
+        throw new Error(`HTTP ${r.status}: ${r.statusText}`);
+      }
+      
       const data = await r.json();
       
       // Simulate realistic typing delay
       setTimeout(() => {
         hideTypingIndicator(typingIndicator);
-        add('bot', data.reply || 'Sorry, I had trouble answering that.');
+        if (data.reply && data.reply.trim()) {
+          add('bot', data.reply);
+        } else {
+          console.error('No reply in response:', data);
+          add('bot', 'Sorry, I had trouble answering that. Please try again.');
+        }
         if (data.handoffSuggested) lead.style.display='block';
       }, 800 + Math.random() * 1200);
       
     } catch (error) {
       hideTypingIndicator(typingIndicator);
+      console.error('Chat error:', error);
       add('bot', 'Sorry, I had trouble connecting. Please try again.');
     }
   }
