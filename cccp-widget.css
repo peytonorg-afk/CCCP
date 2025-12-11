@@ -1,0 +1,258 @@
+/* CCCP Chatbot Widget - Professional Styling */
+/* Matches CCCP.com design system perfectly */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap');
+
+:root {
+  --cccp-primary: #591C27;
+  --cccp-primaryDark: #401017;
+  --cccp-accent: #8B2E3A;
+  --cccp-text: #1F1F1F;
+  --cccp-border: #E4E4E4;
+  --cccp-background: #FFFFFF;
+  --cccp-botBubble: #F9F9F9;
+  --cccp-userBubble: #8B2E3A;
+  --cccp-shadow: rgba(0,0,0,0.15);
+}
+
+/* Floating Chat Button */
+#bb-chat-btn {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  padding: 14px 20px;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, var(--cccp-accent), var(--cccp-primary));
+  color: #fff;
+  border: 1px solid rgba(255,255,255,.12);
+  cursor: pointer;
+  box-shadow: 0 8px 24px var(--cccp-shadow);
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-family: "Montserrat", "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  z-index: 1000;
+}
+
+#bb-chat-btn:hover {
+  filter: brightness(1.06);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px var(--cccp-shadow);
+}
+
+/* Chat Panel */
+#bb-box {
+  display: none;
+  position: fixed;
+  right: 20px;
+  bottom: 80px;
+  width: 380px;
+  max-width: 95vw;
+  height: 540px;
+  background: var(--cccp-background);
+  border-radius: 16px;
+  box-shadow: 0 20px 48px var(--cccp-shadow);
+  overflow: hidden;
+  border: 1px solid var(--cccp-border);
+  font-family: "Open Sans", "Roboto", sans-serif;
+  z-index: 999;
+}
+
+/* Chat Header */
+#bb-head {
+  padding: 16px 20px;
+  font-weight: 600;
+  border-bottom: 1px solid var(--cccp-border);
+  background: var(--cccp-primary);
+  color: #fff;
+  font-family: "Montserrat", "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.3px;
+}
+
+/* Messages Area */
+#bb-msgs {
+  height: 400px;
+  overflow: auto;
+  padding: 16px;
+  background: var(--cccp-background);
+  scrollbar-width: thin;
+  scrollbar-color: var(--cccp-border) transparent;
+}
+
+#bb-msgs::-webkit-scrollbar {
+  width: 6px;
+}
+
+#bb-msgs::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#bb-msgs::-webkit-scrollbar-thumb {
+  background: var(--cccp-border);
+  border-radius: 3px;
+}
+
+/* Message Bubbles */
+.msg {
+  margin: 12px 0;
+  font: 14px/1.5 "Open Sans", "Roboto", sans-serif;
+  padding: 12px 16px;
+  border-radius: 16px;
+  max-width: 85%;
+  box-shadow: 0 2px 8px var(--cccp-shadow);
+}
+
+.you {
+  text-align: right;
+  background: var(--cccp-userBubble);
+  color: #fff;
+  margin-left: 20px;
+  border-bottom-right-radius: 4px;
+}
+
+.bot {
+  text-align: left;
+  background: var(--cccp-botBubble);
+  color: var(--cccp-text);
+  border: 1px solid var(--cccp-border);
+  margin-right: 20px;
+  border-bottom-left-radius: 4px;
+}
+
+/* Input Form */
+#bb-form {
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  border-top: 1px solid var(--cccp-border);
+  background: var(--cccp-background);
+}
+
+#bb-input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1px solid var(--cccp-border);
+  border-radius: 12px;
+  background: var(--cccp-background);
+  color: var(--cccp-text);
+  font-family: "Open Sans", "Roboto", sans-serif;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+#bb-input:focus {
+  outline: none;
+  border-color: var(--cccp-accent);
+  box-shadow: 0 0 0 3px rgba(139,46,58,0.1);
+}
+
+#bb-input::placeholder {
+  color: var(--cccp-text);
+  opacity: 0.6;
+  font-weight: 300;
+}
+
+#bb-send {
+  padding: 12px 18px;
+  border-radius: 12px;
+  border: 0;
+  background: var(--cccp-accent);
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  font-family: "Montserrat", "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+#bb-send:hover {
+  background: var(--cccp-primary);
+  transform: translateY(-1px);
+}
+
+/* Lead Capture Form */
+#bb-lead {
+  padding: 16px;
+  border-top: 1px solid var(--cccp-border);
+  background: var(--cccp-background);
+}
+
+#bb-lead input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--cccp-border);
+  border-radius: 12px;
+  margin: 8px 0;
+  background: var(--cccp-background);
+  color: var(--cccp-text);
+  font-family: "Open Sans", "Roboto", sans-serif;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+#bb-lead input:focus {
+  outline: none;
+  border-color: var(--cccp-accent);
+  box-shadow: 0 0 0 3px rgba(139,46,58,0.1);
+}
+
+#bb-lead input::placeholder {
+  color: var(--cccp-text);
+  opacity: 0.6;
+  font-weight: 300;
+}
+
+#bb-lead button {
+  padding: 12px 18px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--cccp-accent);
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  font-family: "Montserrat", "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  margin-top: 8px;
+}
+
+#bb-lead button:hover {
+  background: var(--cccp-primary);
+  transform: translateY(-1px);
+}
+
+/* Professional Typography */
+.msg p {
+  margin: 0;
+  padding: 0;
+}
+
+.msg strong {
+  font-weight: 600;
+}
+
+.msg em {
+  font-style: italic;
+  opacity: 0.8;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  #bb-box {
+    right: 10px;
+    bottom: 70px;
+    width: calc(100vw - 20px);
+    height: calc(100vh - 100px);
+    max-height: 500px;
+  }
+  
+  #bb-chat-btn {
+    right: 15px;
+    bottom: 15px;
+    padding: 12px 16px;
+    font-size: 13px;
+  }
+}
