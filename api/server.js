@@ -507,5 +507,11 @@ app.get("/", (req,res)=>{
 // Start server after loading knowledge base
 (async () => {
   await loadKnowledgeBase();
-  app.listen(PORT, ()=> console.log(`Chat API running on http://localhost:${PORT}`));
+  // Only start server if not in Vercel (serverless)
+  if (process.env.VERCEL !== "1") {
+    app.listen(PORT, ()=> console.log(`Chat API running on http://localhost:${PORT}`));
+  }
 })();
+
+// Export for Vercel serverless
+export default app;
