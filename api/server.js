@@ -23,13 +23,19 @@ app.use((req,res,next)=>{
   const origin = req.headers.origin || "";
   // Allow requests without Origin (same-origin or server-to-server)
   if (!origin) return next();
-  if (!ALLOWED.length || ALLOWED.includes(origin)) {
+  
+  // If ALLOWED_ORIGINS is empty or not set, allow all origins (for development)
+  // Otherwise, check if origin is in allowed list
+  if (!ALLOWED.length || ALLOWED.includes(origin) || ALLOWED.includes("*")) {
     res.setHeader("Access-Control-Allow-Origin", origin);
     res.setHeader("Access-Control-Allow-Headers", "Content-Type");
     res.setHeader("Access-Control-Allow-Methods", "POST,GET,OPTIONS");
     if (req.method === "OPTIONS") return res.sendStatus(200);
     return next();
   }
+  
+  // Log blocked origin for debugging
+  console.log(`[CORS] Blocked origin: ${origin}, Allowed: [${ALLOWED.join(", ")}]`);
   return res.status(403).json({ error: "Origin not allowed" });
 });
 app.use("/widget", express.static(path.join(__dirname, "..", "widget")));
