@@ -70,7 +70,7 @@
     
     /* Enhanced Messages Area - Balanced Height */
     #bb-msgs{
-      height:calc(100% - 56px - 80px - 32px);overflow:auto;padding:20px;
+      height:calc(100% - 56px - 84px - 36px);overflow:auto;padding:20px;
       background:linear-gradient(180deg,rgba(249,249,249,0.5) 0%,rgba(255,255,255,0.8) 100%);
       scrollbar-width:thin;scrollbar-color:rgba(139,46,58,0.3) transparent;
       box-sizing:border-box;
@@ -78,9 +78,9 @@
     
     /* Minimal Privacy Footer */
     #bb-footer{
-      padding:8px 20px;text-align:center;border-top:1px solid rgba(228,228,228,0.2);
+      padding:10px 20px;text-align:center;border-top:1px solid rgba(228,228,228,0.2);
       background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);
-      box-sizing:border-box;min-height:32px;display:flex;align-items:center;justify-content:center;
+      box-sizing:border-box;min-height:36px;display:flex;align-items:center;justify-content:center;
     }
     #bb-footer a{
       font-size:11px;color:rgba(89,28,39,0.7);text-decoration:none;
@@ -130,7 +130,7 @@
     
     /* Perfectly Symmetrical Input Form */
     #bb-form{
-      display:flex;align-items:stretch;gap:10px;padding:16px 20px;
+      display:flex;align-items:stretch;gap:10px;padding:18px 20px;
       border-top:1px solid rgba(228,228,228,0.3);
       background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);
       box-sizing:border-box;
@@ -214,8 +214,9 @@
       #bb-send{height:44px;padding:0 18px;font-size:14px;min-width:65px;margin:0;border-radius:22px;flex-shrink:0}
       #bb-lead input,#bb-lead button{padding:14px 18px;font-size:14px}
       #bb-head{padding:16px 20px;min-height:52px}
-      #bb-msgs{height:calc(100% - 52px - 72px - 32px);padding:16px}
-      #bb-footer{padding:6px 16px;min-height:28px}
+      #bb-form{padding:16px}
+      #bb-msgs{height:calc(100% - 52px - 76px - 36px);padding:16px}
+      #bb-footer{padding:8px 16px;min-height:32px}
       #bb-footer a{font-size:10px}
     }
     
