@@ -148,11 +148,26 @@
   <!-- ============================================ -->
   <!-- CHATBOT WIDGET - ADD/REMOVE HERE -->
   <!-- ============================================ -->
-  <!-- 
-    TO ADD: Remove the <!-- and --> around the script below
-    TO REMOVE: Add <!-- before and --> after the script
-  -->
+  <!-- CHATBOT WIDGET -->
+  <!-- TO ADD: Keep the script below uncommented -->
+  <!-- TO REMOVE: Comment it out with <!-- -->
+  <!-- ============================================ -->
   
-  <!-- <script defer src="https://cameracorner.vercel.app/widget/widget.js" data-api-url="https://cameracorner.vercel.app" data-privacy-url="https://www.cccp.com/privacy-policy"></script> -->
+  <script defer src="https://cameracorner.vercel.app/widget/widget.js" data-api-url="https://cameracorner.vercel.app" data-privacy-url="https://www.cccp.com/privacy-policy"></script>
+  
+  <!-- Debug: Check if script loaded -->
+  <script>
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        const btn = document.getElementById('bb-chat-btn');
+        if (btn) {
+          console.log('✅ Widget loaded successfully! Chat button found.');
+        } else {
+          console.error('❌ Widget NOT loaded. Chat button not found.');
+          console.log('Check: 1) Hard refresh (Cmd+Shift+R), 2) Browser console for errors, 3) Network tab to see if widget.js loaded');
+        }
+      }, 1000);
+    });
+  </script>
 </body>
 </html>
