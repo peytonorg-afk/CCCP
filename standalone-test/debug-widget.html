@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Widget Debug Test</title>
+</head>
+<body>
+  <h1>Widget Debug Test</h1>
+  <p>Open browser console (F12) to see debug info</p>
+  
+  <div id="debug-info" style="padding: 20px; background: #f0f0f0; margin: 20px;">
+    <h2>Debug Status:</h2>
+    <div id="status">Checking...</div>
+  </div>
+
+  <!-- Widget Script -->
+  <!-- <script 
+    defer 
+    src="https://cameracorner.vercel.app/widget/widget.js" 
+    data-api-url="https://cameracorner.vercel.app"
+    data-privacy-url="https://www.cccp.com/privacy-policy">
+  </script> -->
+
+  <script>
+    // Debug script to check if widget loads
+    setTimeout(() => {
+      const status = document.getElementById('status');
+      const chatBtn = document.getElementById('bb-chat-btn');
+      const chatBox = document.getElementById('bb-box');
+      
+      let info = [];
+      
+      if (chatBtn) {
+        info.push('✅ Chat button found!');
+      } else {
+        info.push('❌ Chat button NOT found');
+      }
+      
+      if (chatBox) {
+        info.push('✅ Chat box found!');
+      } else {
+        info.push('❌ Chat box NOT found');
+      }
+      
+      // Check for script errors
+      window.addEventListener('error', (e) => {
+        if (e.filename && e.filename.includes('widget')) {
+          info.push(`❌ Error loading widget: ${e.message}`);
+        }
+      });
+      
+      status.innerHTML = info.join('<br>');
+      
+      // Also log to console
+      console.log('Widget Debug:', {
+        chatButton: !!chatBtn,
+        chatBox: !!chatBox,
+        scriptLoaded: document.querySelector('script[src*="widget.js"]') !== null
+      });
+    }, 2000);
+  </script>
+</body>
+</html>

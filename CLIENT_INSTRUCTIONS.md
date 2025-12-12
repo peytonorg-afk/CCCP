@@ -13,13 +13,13 @@ Add this **one line** to your website's HTML (before the closing `</body>` tag):
 ```html
 <script 
   defer 
-  src="YOUR-SERVER-URL/widget/widget.js" 
-  data-api-url="YOUR-SERVER-URL"
+  src="https://cameracorner.vercel.app/widget/widget.js" 
+  data-api-url="https://cameracorner.vercel.app"
   data-privacy-url="https://www.cccp.com/privacy-policy">
 </script>
 ```
 
-**Replace `YOUR-SERVER-URL` with your actual chatbot server URL (provided by your chatbot provider).**
+**That's it!** The widget is hosted on our server - just add this code and it works!
 
 ---
 
