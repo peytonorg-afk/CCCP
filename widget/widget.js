@@ -70,7 +70,7 @@
     
     /* Enhanced Messages Area - Balanced Height */
     #bb-msgs{
-      height:calc(580px - 56px - 80px - 32px);overflow:auto;padding:20px;
+      height:calc(100% - 56px - 80px - 32px);overflow:auto;padding:20px;
       background:linear-gradient(180deg,rgba(249,249,249,0.5) 0%,rgba(255,255,255,0.8) 100%);
       scrollbar-width:thin;scrollbar-color:rgba(139,46,58,0.3) transparent;
       box-sizing:border-box;
