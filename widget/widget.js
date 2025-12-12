@@ -38,14 +38,16 @@
     }
     #bb-chat-btn:active{transform:translateY(-1px) scale(0.98)}
     
-    /* Premium Chat Panel with Glass Effect */
+    /* Premium Chat Panel with Glass Effect - Properly Positioned */
     #bb-box{
-      display:none;position:fixed;right:24px;bottom:100px;width:400px;max-width:95vw;height:580px;
+      display:none;position:fixed;right:24px;bottom:100px;width:400px;max-width:calc(100vw - 48px);
+      height:580px;max-height:calc(100vh - 140px);
       background:rgba(255,255,255,0.95);border-radius:24px;
       box-shadow:0 32px 64px rgba(0,0,0,0.12), 0 16px 32px rgba(0,0,0,0.08);
       overflow:hidden;border:1px solid rgba(255,255,255,0.2);
       font-family:"Open Sans","Roboto",sans-serif;backdrop-filter:blur(20px);
       z-index:999;animation:slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-sizing:border-box;
     }
     
     @keyframes slideUp{
@@ -59,7 +61,7 @@
       background:var(--cccp-gradient);color:#fff;position:relative;
       font-family:"Montserrat","Helvetica Neue",sans-serif;font-size:17px;
       letter-spacing:0.5px;text-shadow:0 2px 4px rgba(0,0,0,0.1);
-      box-sizing:border-box;min-height:56px;display:flex;align-items:center;
+      box-sizing:border-box;min-height:56px;display:flex;align-items:center;flex-shrink:0;
     }
     #bb-head::before{
       content:'';position:absolute;top:0;left:0;right:0;bottom:0;
@@ -69,7 +71,7 @@
     
     /* Enhanced Messages Area - Balanced Height */
     #bb-msgs{
-      height:calc(580px - 56px - 80px - 32px);overflow:auto;padding:20px;
+      flex:1;overflow:auto;padding:20px;min-height:0;
       background:linear-gradient(180deg,rgba(249,249,249,0.5) 0%,rgba(255,255,255,0.8) 100%);
       scrollbar-width:thin;scrollbar-color:rgba(139,46,58,0.3) transparent;
       box-sizing:border-box;
@@ -79,7 +81,7 @@
     #bb-footer{
       padding:8px 20px;text-align:center;border-top:1px solid rgba(228,228,228,0.2);
       background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);
-      box-sizing:border-box;min-height:32px;display:flex;align-items:center;justify-content:center;
+      box-sizing:border-box;min-height:32px;display:flex;align-items:center;justify-content:center;flex-shrink:0;
     }
     #bb-footer a{
       font-size:11px;color:rgba(89,28,39,0.7);text-decoration:none;
@@ -132,7 +134,7 @@
       display:flex;align-items:stretch;gap:10px;padding:16px 20px;
       border-top:1px solid rgba(228,228,228,0.3);
       background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);
-      box-sizing:border-box;
+      box-sizing:border-box;flex-shrink:0;
     }
     #bb-input{
       flex:1;padding:0 18px;border:2px solid rgba(228,228,228,0.5);
@@ -205,16 +207,16 @@
     
     /* Mobile Optimizations with PERFECT Alignment */
     @media (max-width: 480px) {
-      #bb-box{right:16px;bottom:90px;width:calc(100vw - 32px);height:calc(100vh - 120px);max-height:600px}
+      #bb-box{right:16px;bottom:90px;width:calc(100vw - 32px);height:calc(100vh - 140px);max-height:600px}
       #bb-chat-btn{right:20px;bottom:20px;padding:14px 20px;font-size:14px}
       .msg{padding:14px 18px;font-size:14px}
-      #bb-form{gap:8px;padding:14px 16px;align-items:stretch}
+      #bb-form{gap:8px;padding:14px 16px;align-items:stretch;flex-shrink:0}
       #bb-input{height:44px;padding:0 14px;font-size:14px;line-height:44px;margin:0;border-radius:22px}
       #bb-send{height:44px;padding:0 18px;font-size:14px;min-width:65px;margin:0;border-radius:22px;flex-shrink:0}
       #bb-lead input,#bb-lead button{padding:14px 18px;font-size:14px}
-      #bb-head{padding:16px 20px;min-height:52px}
-      #bb-msgs{height:calc(100% - 52px - 72px - 32px);padding:16px}
-      #bb-footer{padding:6px 16px;min-height:28px}
+      #bb-head{padding:16px 20px;min-height:52px;flex-shrink:0}
+      #bb-msgs{padding:16px;flex:1;min-height:0}
+      #bb-footer{padding:6px 16px;min-height:28px;flex-shrink:0}
       #bb-footer a{font-size:10px}
     }
     
