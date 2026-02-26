@@ -40,8 +40,7 @@
     
     /* Premium Chat Panel with Glass Effect */
     #bb-box{
-      display:none;position:fixed;right:24px;bottom:100px;width:400px;max-width:95vw;
-      height:580px;max-height:calc(100vh - 140px);
+      display:none;position:fixed;right:24px;bottom:100px;width:400px;max-width:95vw;height:580px;
       background:rgba(255,255,255,0.95);border-radius:24px;
       box-shadow:0 32px 64px rgba(0,0,0,0.12), 0 16px 32px rgba(0,0,0,0.08);
       overflow:hidden;border:1px solid rgba(255,255,255,0.2);
@@ -70,17 +69,17 @@
     
     /* Enhanced Messages Area - Balanced Height */
     #bb-msgs{
-      height:calc(100% - 56px - 84px - 36px);overflow:auto;padding:20px;
+      height:calc(580px - 56px - 80px - 32px);overflow:auto;padding:20px;
       background:linear-gradient(180deg,rgba(249,249,249,0.5) 0%,rgba(255,255,255,0.8) 100%);
       scrollbar-width:thin;scrollbar-color:rgba(139,46,58,0.3) transparent;
-      box-sizing:border-box;
+      box-sizing:border-box;display:flex;flex-direction:column;align-items:flex-start;gap:4px;
     }
     
     /* Minimal Privacy Footer */
     #bb-footer{
-      padding:10px 20px;text-align:center;border-top:1px solid rgba(228,228,228,0.2);
+      padding:8px 20px;text-align:center;border-top:1px solid rgba(228,228,228,0.2);
       background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);
-      box-sizing:border-box;min-height:36px;display:flex;align-items:center;justify-content:center;
+      box-sizing:border-box;min-height:32px;display:flex;align-items:center;justify-content:center;
     }
     #bb-footer a{
       font-size:11px;color:rgba(89,28,39,0.7);text-decoration:none;
@@ -97,10 +96,10 @@
     }
     #bb-msgs::-webkit-scrollbar-thumb:hover{background:rgba(139,46,58,0.5)}
     
-    /* Premium Message Bubbles */
+    /* Premium Message Bubbles - shrink to content, max 85% width */
     .msg{
-      margin:16px 0;font:15px/1.6 "Open Sans","Roboto",sans-serif;
-      padding:16px 20px;border-radius:20px;max-width:85%;position:relative;
+      margin:8px 0;font:15px/1.6 "Open Sans","Roboto",sans-serif;
+      padding:16px 20px;border-radius:20px;max-width:85%;width:fit-content;position:relative;
       box-shadow:0 4px 16px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04);
       animation:messageSlide 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       backdrop-filter:blur(10px);
@@ -112,7 +111,7 @@
     }
     
     .you{
-      text-align:right;background:var(--cccp-gradient);color:#fff;
+      align-self:flex-end;text-align:right;background:var(--cccp-gradient);color:#fff;
       margin-left:24px;border-bottom-right-radius:6px;
       box-shadow:0 6px 20px rgba(89,28,39,0.25), 0 2px 8px rgba(0,0,0,0.1);
     }
@@ -123,14 +122,14 @@
     }
     
     .bot{
-      text-align:left;background:rgba(255,255,255,0.9);color:var(--cccp-text);
+      align-self:flex-start;text-align:left;background:rgba(255,255,255,0.9);color:var(--cccp-text);
       border:1px solid rgba(228,228,228,0.5);margin-right:24px;
       border-bottom-left-radius:6px;backdrop-filter:blur(10px);
     }
     
     /* Perfectly Symmetrical Input Form */
     #bb-form{
-      display:flex;align-items:stretch;gap:10px;padding:18px 20px;
+      display:flex;align-items:stretch;gap:10px;padding:16px 20px;
       border-top:1px solid rgba(228,228,228,0.3);
       background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);
       box-sizing:border-box;
@@ -206,7 +205,7 @@
     
     /* Mobile Optimizations with PERFECT Alignment */
     @media (max-width: 480px) {
-      #bb-box{right:16px;bottom:90px;width:calc(100vw - 32px);height:calc(100vh - 140px);max-height:600px}
+      #bb-box{right:16px;bottom:90px;width:calc(100vw - 32px);height:calc(100vh - 120px);max-height:600px}
       #bb-chat-btn{right:20px;bottom:20px;padding:14px 20px;font-size:14px}
       .msg{padding:14px 18px;font-size:14px}
       #bb-form{gap:8px;padding:14px 16px;align-items:stretch}
@@ -214,16 +213,15 @@
       #bb-send{height:44px;padding:0 18px;font-size:14px;min-width:65px;margin:0;border-radius:22px;flex-shrink:0}
       #bb-lead input,#bb-lead button{padding:14px 18px;font-size:14px}
       #bb-head{padding:16px 20px;min-height:52px}
-      #bb-form{padding:16px}
-      #bb-msgs{height:calc(100% - 52px - 76px - 36px);padding:16px}
-      #bb-footer{padding:8px 16px;min-height:32px}
+      #bb-msgs{height:calc(100% - 52px - 72px - 32px);padding:16px}
+      #bb-footer{padding:6px 16px;min-height:28px}
       #bb-footer a{font-size:10px}
     }
     
     /* Loading Animation */
     .typing-indicator{
-      display:flex;align-items:center;gap:4px;padding:16px 20px;
-      background:rgba(255,255,255,0.9);border-radius:20px;margin:16px 0;
+      align-self:flex-start;display:flex;align-items:center;gap:4px;padding:16px 20px;
+      background:rgba(255,255,255,0.9);border-radius:20px;margin:8px 0;
       border:1px solid rgba(228,228,228,0.5);backdrop-filter:blur(10px);
     }
     .typing-dot{
@@ -300,15 +298,22 @@
     }
   }
 
+  const CHAT_TIMEOUT_MS = 28000; // 28s so slow API (e.g. live website fetch) can still finish
+
   async function ask(q){
     add('you', q);
     const typingIndicator = showTypingIndicator();
     
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), CHAT_TIMEOUT_MS);
+    
     try {
       const r = await fetch(`${API_BASE}/api/chat`, {
         method:'POST', headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({ sessionId, message:q })
+        body: JSON.stringify({ sessionId, message:q }),
+        signal: controller.signal
       });
+      clearTimeout(timeoutId);
       
       if (!r.ok) {
         throw new Error(`HTTP ${r.status}: ${r.statusText}`);
@@ -329,9 +334,13 @@
       }, 800 + Math.random() * 1200);
       
     } catch (error) {
+      clearTimeout(timeoutId);
       hideTypingIndicator(typingIndicator);
       console.error('Chat error:', error);
-      add('bot', 'Sorry, I had trouble connecting. Please try again.');
+      const msg = error.name === 'AbortError'
+        ? 'Request timed out. Please try again.'
+        : 'Sorry, I had trouble connecting. Please try again.';
+      add('bot', msg);
     }
   }
 

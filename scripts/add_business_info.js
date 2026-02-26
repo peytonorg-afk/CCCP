@@ -22,8 +22,8 @@ Hours:
 - Saturday: 10:00 AM - 4:00 PM (or by appointment)
 - Sunday: Closed
 
-Location: 529 North Monroe Avenue, Green Bay, WI 54301
-Phone: (920) 432-8899
+Location: [UPDATE WITH ACTUAL ADDRESS]
+Phone: [UPDATE WITH ACTUAL PHONE]
 
 Walk-ins: Yes, walk-ins are welcome during business hours. However, calling ahead is recommended to ensure availability and reduce wait time.
 
@@ -37,9 +37,9 @@ Same-day service: Available for most repairs when you come in during business ho
     title: "Contact Information",
     content: `Contact Camera Corner Connecting Point:
 
-Phone: (920) 432-8899
+Phone: [UPDATE WITH ACTUAL PHONE]
 Email: [UPDATE WITH ACTUAL EMAIL]
-Address: 529 North Monroe Avenue, Green Bay, WI 54301
+Address: [UPDATE WITH ACTUAL ADDRESS]
 
 Hours:
 - Monday-Friday: 9:00 AM - 6:00 PM

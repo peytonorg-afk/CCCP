@@ -24,10 +24,9 @@ app.use((req,res,next)=>{
   // Allow requests without Origin (same-origin or server-to-server)
   if (!origin) return next();
   
-  // If ALLOWED_ORIGINS is empty/not set, allow all origins (for development)
-  // If set to "*", allow all origins
+  // If ALLOWED_ORIGINS is empty or not set, allow all origins (for development)
   // Otherwise, check if origin is in allowed list
-  if (!ALLOWED.length || ALLOWED.includes("*") || ALLOWED.includes(origin)) {
+  if (!ALLOWED.length || ALLOWED.includes(origin) || ALLOWED.includes("*")) {
     res.setHeader("Access-Control-Allow-Origin", origin);
     res.setHeader("Access-Control-Allow-Headers", "Content-Type");
     res.setHeader("Access-Control-Allow-Methods", "POST,GET,OPTIONS");
@@ -505,22 +504,14 @@ app.get("/", (req,res)=>{
   res.sendFile(path.join(__dirname, "..", "index.html"));
 });
 
-// Load knowledge base (async, but don't block export for Vercel)
-let kbLoaded = false;
-loadKnowledgeBase().then(() => {
-  kbLoaded = true;
-  console.log("[KB] Knowledge base loaded");
-}).catch(err => {
-  console.error("[KB] Error loading knowledge base:", err);
-});
-
-// Only start server if not in Vercel (serverless)
-if (process.env.VERCEL !== "1") {
-  (async () => {
-    await loadKnowledgeBase();
+// Start server after loading knowledge base
+(async () => {
+  await loadKnowledgeBase();
+  // Only start server if not in Vercel (serverless)
+  if (process.env.VERCEL !== "1") {
     app.listen(PORT, ()=> console.log(`Chat API running on http://localhost:${PORT}`));
-  })();
-}
+  }
+})();
 
 // Export for Vercel serverless
 export default app;
