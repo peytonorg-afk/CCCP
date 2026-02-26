@@ -96,13 +96,19 @@
     }
     #bb-msgs::-webkit-scrollbar-thumb:hover{background:rgba(139,46,58,0.5)}
     
-    /* Premium Message Bubbles - shrink to content, max 85% width */
+    /* Message row: full width, pushes bubble left or right so bubble can shrink-wrap */
+    .msg-row{display:flex;width:100%;justify-content:flex-start;}
+    .msg-row--you{justify-content:flex-end;}
+    
+    /* Premium Message Bubbles - wrap tightly to text, max 85% width */
     .msg{
       margin:8px 0;font:15px/1.6 "Open Sans","Roboto",sans-serif;
-      padding:16px 20px;border-radius:20px;max-width:85%;width:fit-content;position:relative;
+      padding:16px 20px;border-radius:20px;max-width:85%;position:relative;
       box-shadow:0 4px 16px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04);
       animation:messageSlide 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       backdrop-filter:blur(10px);
+      display:inline-block;width:fit-content;min-width:0;
+      box-sizing:border-box;word-wrap:break-word;overflow-wrap:break-word;
     }
     
     @keyframes messageSlide{
@@ -111,7 +117,7 @@
     }
     
     .you{
-      align-self:flex-end;text-align:right;background:var(--cccp-gradient);color:#fff;
+      text-align:right;background:var(--cccp-gradient);color:#fff;
       margin-left:24px;border-bottom-right-radius:6px;
       box-shadow:0 6px 20px rgba(89,28,39,0.25), 0 2px 8px rgba(0,0,0,0.1);
     }
@@ -122,7 +128,7 @@
     }
     
     .bot{
-      align-self:flex-start;text-align:left;background:rgba(255,255,255,0.9);color:var(--cccp-text);
+      text-align:left;background:rgba(255,255,255,0.9);color:var(--cccp-text);
       border:1px solid rgba(228,228,228,0.5);margin-right:24px;
       border-bottom-left-radius:6px;backdrop-filter:blur(10px);
     }
@@ -218,11 +224,12 @@
       #bb-footer a{font-size:10px}
     }
     
-    /* Loading Animation */
+    /* Loading Animation - compact bubble like messages */
     .typing-indicator{
-      align-self:flex-start;display:flex;align-items:center;gap:4px;padding:16px 20px;
+      display:inline-flex;align-items:center;gap:4px;padding:16px 20px;
       background:rgba(255,255,255,0.9);border-radius:20px;margin:8px 0;
       border:1px solid rgba(228,228,228,0.5);backdrop-filter:blur(10px);
+      width:fit-content;
     }
     .typing-dot{
       width:8px;height:8px;border-radius:50%;background:var(--cccp-accent);
@@ -279,22 +286,24 @@
   document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') box.style.display='none'; });
 
   function add(role, text){
+    const row=document.createElement('div'); row.className=`msg-row msg-row--${role}`;
     const d=document.createElement('div'); d.className=`msg ${role}`; d.textContent=text;
-    msgs.appendChild(d); msgs.scrollTop = msgs.scrollHeight;
+    row.appendChild(d); msgs.appendChild(row); msgs.scrollTop = msgs.scrollHeight;
   }
 
   function showTypingIndicator() {
+    const row = document.createElement('div'); row.className = 'msg-row';
     const typingDiv = document.createElement('div');
     typingDiv.className = 'typing-indicator';
     typingDiv.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
-    msgs.appendChild(typingDiv);
+    row.appendChild(typingDiv); msgs.appendChild(row);
     msgs.scrollTop = msgs.scrollHeight;
     return typingDiv;
   }
 
   function hideTypingIndicator(typingDiv) {
-    if (typingDiv && typingDiv.parentNode) {
-      typingDiv.parentNode.removeChild(typingDiv);
+    if (typingDiv && typingDiv.parentNode && typingDiv.parentNode.parentNode) {
+      typingDiv.parentNode.parentNode.removeChild(typingDiv.parentNode);
     }
   }
 
